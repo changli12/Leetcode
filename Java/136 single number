@@ -1,0 +1,10 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        int n=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            n^=nums[i];//XOR X^0=X  X^1=~X X^X=X
+        }
+        return n;
+    }
+}
