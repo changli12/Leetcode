@@ -1,0 +1,8 @@
+class Solution {
+    public boolean canWinNim(int n) {
+        return n % 4 != 0 ;
+    }
+}
+/*
+When the number of the stone is 4,I will lose this game.For number 4n-1,4n-2,4n-3,we can pick 4n-5,4n-6,4n-7,then we will win.But for 4n,we will lose.
+*/
