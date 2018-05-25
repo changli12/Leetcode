@@ -1,0 +1,26 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result=new ArrayList();//list的定义方法，前序中序后序是根据根节点的顺序决定的
+        if(root==null)//必须有判断根节点是否存在的步骤
+            return result;
+        if(root.left!=null)
+        {
+            result.addAll(inorderTraversal(root.left));//两个list合并使用addAll()方法
+        }
+        result.add(root.val);
+        if(root.right!=null)
+        {
+            result.addAll(inorderTraversal(root.right));
+        }
+        return result;
+    }
+}
