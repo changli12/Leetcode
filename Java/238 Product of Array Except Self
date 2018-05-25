@@ -1,0 +1,18 @@
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int n=nums.length;//java数组长度不是length（）
+        int[] result=new int[n];//数组的定义方式
+        result[0]=1;
+        int t=1;
+        for(int i=1;i<n;i++)
+        {
+            result[i]=result[i-1]*nums[i-1];
+        }
+        for(int j=n-1;j>=0;j--)
+        {
+            result[j]=t*result[j];
+            t=nums[j]*t;//易出错点
+        }
+        return result;//数组返回不加[]
+    }
+}
