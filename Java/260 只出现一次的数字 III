@@ -1,0 +1,17 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int i;
+        int j=0;
+        for(i=0;i<nums.length;i++)
+        {
+            int r;
+            if(nums[i]!=0)
+            {
+                r=nums[i];//数组交换，隔零交换
+                nums[i]=nums[j];
+                nums[j]=r;
+                j++;
+            }
+        }
+    }
+}
