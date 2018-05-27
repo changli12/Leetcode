@@ -3,7 +3,7 @@ class Solution {
         int n=0;
         for(int i=0;i<nums.length;i++)
         {
-            n^=nums[i];//XOR X^0=X  X^1=~X X^X=X
+            n^=nums[i];//“^”相同则结果为0，不同则结果为1,"&"都为1，结果为1，其余为0，“|”其中一个是1，结果就为1，“~”0为1，1为0
         }
         return n;
     }
