@@ -22,3 +22,43 @@ class Solution {
         }  
     }
 }
+
+
+
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<Integer> list=new ArrayList();
+        List<List<Integer>> result = new ArrayList<List<Integer>>();//List<List<Integer>>初始化方式！
+        List<List<Integer>> pre = new ArrayList<List<Integer>>();
+        if(nums.length==1)
+        {
+            list.add(nums[0]);
+            result.add(list);
+            return result;
+        }
+        int n=nums.length;
+        int temp=nums[n-1];
+        int[] pnums=new int[n-1];
+        for(int m=0;m<n-1;m++)//数组的删除只能自己写方法实现
+        {
+            pnums[m]=nums[m];
+        }
+        pre=permute(pnums);
+        for(int i=0;i<pre.size();i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                ArrayList list2=new ArrayList<>(pre.get(i));  
+                /*list是引用，如果要赋值有两种方法1、ArrayList B　＝ new ArrayList<> (A);  
+                2、ArrayList B　＝ A.clone();  
+                3、ArrayList B　＝ new ArrayList<String>();  B.addAll(A); 
+                4、for(String s: A)  B.add(s); 
+                这种是错误的！list2=pre.get(i);
+                */
+                list2.add(j,temp);//在某个索引位置添加，原element向后移，还有.set(index,element)为替换方法
+                result.add(list2);
+            }
+        }
+        return result;
+    }
+}
