@@ -1,0 +1,7 @@
+select distinct p1.email from Person p1, Person p2
+where p1.email = p2.email and p1.Id != p2.Id
+
+
+select email from Person
+group by email
+having count(*)>1
