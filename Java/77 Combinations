@@ -1,0 +1,32 @@
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        List<Integer> list=new ArrayList<Integer>();
+        List<List<Integer>> List=new ArrayList<List<Integer>>();
+        if(n<k)
+        {
+            return List;
+        }
+        else
+        {
+            backtracking(List,list,1,1,n,k);
+            return List;
+        }
+        
+    }
+    private void backtracking(List<List<Integer>> List,List<Integer> list,int t,int start,int n,int k)
+    {
+        if(t>k)
+        {
+            List.add(new ArrayList<>(list));
+        }
+        else
+        {
+            for(int i=start;i<=n;i++)
+            {
+                list.add(i);
+                backtracking(List,list,t+1,i+1,n,k);
+                list.remove(list.size()-1);
+            }
+        }
+    }
+}
