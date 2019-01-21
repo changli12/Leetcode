@@ -1,0 +1,26 @@
+class Solution {
+    public String convert(String s, int numRows) {
+       if (s == null || numRows == 1)
+			return s;
+		int len = s.length();
+		if (len <= numRows)
+			return s;
+		StringBuffer res = new StringBuffer();
+		int size = 2 * numRows - 2;//每次处理的长度
+		for (int i = 0; i < numRows; i++) {//每一行的元素
+			char ch;
+			for (int j = i; j < len; j += size) {
+				ch = s.charAt(j);
+				res.append(ch);
+				if (i != 0 && i != numRows - 1) {//如果是中间元素单独处理
+					int tmp = j + size - 2 * i;
+					if (tmp < len) {
+						ch = s.charAt(tmp);
+						res.append(ch);
+					}
+				}
+			}
+        }
+        return res.toString();
+    }
+}
