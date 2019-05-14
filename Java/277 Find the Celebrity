@@ -1,0 +1,55 @@
+/* The knows API is defined in the parent class Relation.
+      boolean knows(int a, int b); */
+
+public class Solution extends Relation {
+    public int findCelebrity(int n) {
+        if(n<1) return -1;
+        boolean flag;
+        int count=0,temp=0;
+        for(int i=0;i<n;i++){
+            flag=true;
+            for(int j=0;j<n;j++){
+                if(!knows(j,i)){
+                    flag=false;
+                    break;
+                }
+            }
+            if(flag){
+                count++;
+                temp=i;
+            }
+        }
+        if(count==1){
+            for(int i=0;i<n;i++){
+                if(knows(temp,i)==true&&temp!=i) return -1;
+            }
+            return temp;
+        }
+        return -1;
+    }
+}
+
+O(n)
+O(1)
+
+/* The knows API is defined in the parent class Relation.
+      boolean knows(int a, int b); */
+
+public class Solution extends Relation {
+    public int findCelebrity(int n) {
+        if(n<2) return -1;
+        int res=0;
+        for(int i=0;i<n;i++){
+            if(knows(res,i)){
+                res=i;
+            }
+        }
+        for(int i=0;i<n;i++){
+            if((!knows(i,res)||knows(res,i))&&res!=i){
+                return -1;
+            }
+        }
+        return res;
+    }
+}
+
