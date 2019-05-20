@@ -1,0 +1,43 @@
+class Solution {
+    public String getHint(String secret, String guess) {
+        if(secret==null||secret=="") return "0A0B";
+        char[] sechar=secret.toCharArray();
+        char[] guchar=guess.toCharArray();
+        String res="";
+        int a=0,b=0;
+        for(int i=0;i<sechar.length;i++){
+            if(sechar[i]==guchar[i]){
+                a++;
+            }
+        }
+        for(int i=0;i<sechar.length;i++){
+            for(int j=0;j<guchar.length;j++){
+                if(sechar[i]==guchar[j]){
+                    b++;
+                    guchar[j]=' ';
+                    break;
+                }
+            }
+        }
+        b=b-a;
+        String astring=String.valueOf(a);
+        String bstring=String.valueOf(b);
+        return a+"A"+b+"B";
+    }
+}
+
+class Solution {
+    public String getHint(String secret, String guess) {
+        int bulls=0,cows=0;
+        int[] count=new int[10];
+        for(int i=0;i<secret.length();i++){
+            if(secret.charAt(i)==guess.charAt(i)){
+                bulls++;
+            }else{
+                if(count[secret.charAt(i)-'0']++<0) cows++;
+                if(count[guess.charAt(i)-'0']-->0) cows++;
+            }
+        }
+        return bulls+"A"+cows+"B";
+    }
+}
