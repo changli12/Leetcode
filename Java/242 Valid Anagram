@@ -10,3 +10,19 @@ class Solution {
         return Arrays.equals(str1, str2);
     }
 }
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()) return false;
+        int count[]=new int[26];
+        Arrays.fill(count,0);
+        for(int i=0;i<s.length();i++){
+            count[s.charAt(i)-97]++;
+        }
+        for(int i=0;i<t.length();i++){
+            if(count[t.charAt(i)-97]<=0)
+                return false;
+            count[t.charAt(i)-97]--;
+        }
+        return true;
+    }
+}
