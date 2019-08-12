@@ -1,0 +1,16 @@
+class Solution {
+    public List<String> generatePossibleNextMoves(String s) {
+        List<String> list=new ArrayList<>();
+        if(s==null||s.length()<2) return list;
+        for(int i=0;i<s.length()-1;i++){
+            StringBuilder str=new StringBuilder(s);
+            if(str.charAt(i)=='+'&&str.charAt(i+1)=='+'){
+                str.setCharAt(i,'-');
+                str.setCharAt(i+1,'-');
+                list.add(str.toString());
+            }
+            
+        }
+        return list;
+    }
+}
