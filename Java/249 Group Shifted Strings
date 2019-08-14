@@ -1,0 +1,26 @@
+class Solution {
+    public List<List<String>> groupStrings(String[] strings) {
+        HashMap<String,List<String>> map=new HashMap<>();
+        for(int i=0;i<strings.length;i++){
+            char c[]=strings[i].toCharArray();
+            int sub=c[0]-'a';
+            String temp="";
+            for(int j=0;j<c.length;j++){
+                c[j]=(char)(c[j]-sub);
+                if(c[j]<'a'){
+                    c[j]=(char)(c[j]+26);
+                }
+                temp+=c[j];
+            }
+            if(!map.containsKey(temp)){
+                List<String> list=new ArrayList<>();
+                list.add(strings[i]);
+                map.put(temp,list);
+            }else{
+                map.get(temp).add(strings[i]);
+            }
+            
+        }
+        return new ArrayList<>(map.values());
+    }
+}
